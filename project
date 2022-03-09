@@ -1,0 +1,131 @@
+from random import randint
+x = randint(1000000000,1100000000)
+disc = 0
+cart = []
+total = []
+
+y = input("Hi, Welcome To Designer Enterprises!\nWhat is your Good Name? ")
+
+two = {"ss11":3000,"ss12":3000,"ss13":3000}
+three = {"an01":4000,"an02":4000,"an03":4000}
+four = {"ks01":5000,"ks02":5000,"ks03":5000}
+all = {"ss11":3000,"ss12":3000,"ss13":3000,"an01":4000,"an02":4000,"an03":4000,"ks01":5000,"ks02":5000,"ks03":5000}
+
+def cashier():
+  d_ask = input("\nWhich type of Articles you Would like to see?\n(Type 'Two' for '2-Pc', 'Three' for '3-Pc', 'Four' for '4-Pc', or any letter For 'All Designs: ') ").lower()
+  if d_ask == "two":
+    print("\n{:15}{}".format("Articles:", "Prices:"))
+    for i, j in two.items():
+      print("{:15}Rs.{}".format(i.title(), j))
+    print("Sana-Safinaz Brand Articles 'SS' Colored: 'Red'")
+  elif d_ask == "three":
+    print("\n{:15}{}".format("Articles:", "Prices:"))
+    for i, j in three.items():
+      print("{:15}Rs.{}".format(i.title(), j))
+    print("Anaya Brand Articles 'AN' are Colored: 'White'")
+  elif d_ask == "four":
+    print("\n{:15}{}".format("Articles:", "Prices:"))
+    for i, j in four.items():
+      print("{:15}Rs.{}".format(i.title(), j))
+    print("Kasuri Brand Articles 'KS' are Colored: 'Pink'")
+  else:
+    print("\n{:15}{}".format("Articles:", "Prices:"))
+    for i, j in all.items():
+      print("{:15}Rs.{}".format(i.title(), j))
+    print("\nSana-Safinaz Brand Articles 'SS' are (2-Piece) Designs!\nColored: 'Red'\nAnaya Brand Articles 'AN' are (3-Piece) Designs!\nColored: 'White'\nKasuri Brand Articles 'KS' are (4-Piece) Designs!\nColored: 'Pink'")
+
+
+  asking = input("\n\nWhich Article Would you like to Purchase from us? ").lower()
+  while asking != "no":
+    if asking in all:
+      cart.append(asking)
+      asking = input("Oki, This Article has been Successfully added into your Cart!\nDo you Want Anything Else?\nif not type 'No' to Proceed: ").lower()
+    else:
+      asking = input("We are Really Sorry, This Article is not available or out of stock!, Kindy choose from the given design Codes above!\nor just type 'No' to Proceed: ").lower()
+
+
+cashier()
+print("\nHere are all the Items in your Cart:")
+for i in range(0,len(cart)):
+    print(cart[i].title(),end=" ")
+
+answer = input("\n\nSale! Sale! Sale!\nFor Shopping above 10,000/- Get upto 20% OFF \nLast Chance!!!\nDo you Wish to Buy Anything Else? or just these Items? : ").lower()
+if answer == "yes":
+  cashier()
+print("Here's all the Dresses you are Willing to Purchase by their Codes:")
+print(cart)
+for items in cart:
+  total.append(all[items])
+  total_amount = sum(total)
+else:
+  for items in cart:
+    total.append(all[items])
+  total_amount = sum(total)
+print()
+print("\033[1;33;1m*"*55)
+print("\033[1;31;1mYour Items:")
+for i in range(0, len(cart)):
+    print("{:11}{}{:8}Rs.{}".format(' ',cart[i].title(),' ',total[i]))
+
+print("\033[1;33;1m*"*30)
+print("\033[1;31;1mTotal Amount:",total_amount,"/- Rs")
+print("\033[1;33;1m*"*55,"\033[1;31;1m")
+if total_amount in range(0,5001):
+    disc = 0 / 100 * total_amount
+    final_price = total_amount - disc
+    print("0% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (5001,7501):
+    disc = 5 / 100 * total_amount
+    final_price = total_amount - disc
+    print("5% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (7501,8001):
+    disc = 6 / 100 * total_amount
+    final_price = total_amount - disc
+    print("6% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (8001,8501):
+    disc = 7 / 100 * total_amount
+    final_price = total_amount - disc
+    print("7% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (8501,9001):
+    disc = 8 / 100 * total_amount
+    final_price = total_amount - disc
+    print("8% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (9001,9501):
+    disc = 9 / 100 * total_amount
+    final_price = total_amount - disc
+    print("9% Discount Given, Which in Rupees is:",disc,"/-")
+
+elif total_amount in range (9501,10001):
+    disc = 10 / 100 * total_amount
+    final_price = total_amount - disc
+    print("10% Discount Given, Which in Rupees is:",disc,"/-")
+    
+else:
+    disc = 20 / 100 * total_amount
+    final_price = total_amount - disc
+    print("20% Discount Given, Which in Rupees is:",disc,"/-")
+
+print("Deduction: ",total_amount,"-",disc)
+print("\033[1;30;1m\n** ** **** *")
+print(" ** *** **")
+print("* **\033[1;31;1mDE\033[1;30;1m*** ")
+print("* **** ***")
+print("*** **** *")
+if cart == []:
+  print(" "*9,"\033[1;31;1m0000000000","\nNo Statement Printed")
+else:
+  print(" "*8,"\033[1;31;1m",x)
+print()
+print("\033[1;33;1m*"*30)
+print("*"*30)
+print("\033[1;31;1mTo Pay:",final_price,"/- Rupees Only!")
+print("\033[1;33;1m*"*30)
+print("*"*30)
+print("\033[1;32;1m\nThank-You For Shopping with us,\033[1;31;1m",y.title(),"!")
+print("\033[1;32;1mFor any Complains: \nContact us at:\033[1;34;1m +923147800668\n\033[1;32;1mOr Mail us at: Designerenterprises4@gmail.com")
+print("Designers and Partners:\033[1;34;1m Muhammad Shehzam, Quosain Zahra, Hooria Attas & Misbah Javed")
